@@ -1,5 +1,6 @@
 ﻿using AndreLanches.Models;
 using AndreLanches.Repositories.Interfaces;
+using AndreLanches.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AndreLanches.Controllers
@@ -17,7 +18,37 @@ namespace AndreLanches.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var itens = _carrinhoCompra.GetCarrinhoCompraItens();
+            _carrinhoCompra.CarrinhoCompraItems = itens;
+
+            var carrinhoCompraVM = new CarrinhoCompraViewModel
+            {
+                CarrinhoCompra = _carrinhoCompra,
+                CarrinhoCompraTotal = _carrinhoCompra.GetCarrinhoCompraTotal()
+            };
+
+            return View(carrinhoCompraVM);
         }
+
+        public RedirectToActionResult AdicionarItemNoCarrinhoCompra(int lancheId)
+        {
+            var lancheSelecionado = _lancheRepository.Lanches.FirstOrDefault(p => p.LancheId == lancheId);
+            if (lancheSelecionado == null)
+            {
+                _carrinhoCompra.AdicionarAoCarrinho(lancheSelecionado);
+            }
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult RemoverItemDoCarrinhoCompra(int lancheId)
+        {
+            var lancheSelecionado = _lancheRepository.Lanches.FirstOrDefault(p => p.LancheId == lancheId);
+            if (lancheSelecionado == null)
+            {
+                _carrinhoCompra.RemoverDoCarrinho(lancheSelecionado);
+            }
+            return RedirectToAction("Index");
+        }
+
     }
 }
