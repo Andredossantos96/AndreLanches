@@ -16,7 +16,7 @@ namespace AndreLanches.Controllers
             _carrinhoCompra = carrinhoCompra;
         }
 
-        public IActionResult Index()
+        public IActionResult CarrinhoDeCompra()
         {
             var itens = _carrinhoCompra.GetCarrinhoCompraItens();
             _carrinhoCompra.CarrinhoCompraItems = itens;
@@ -37,7 +37,7 @@ namespace AndreLanches.Controllers
             {
                 _carrinhoCompra.AdicionarAoCarrinho(lancheSelecionado);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("CarrinhoDeCompra");
         }
 
         public IActionResult RemoverItemDoCarrinhoCompra(int lancheId)
@@ -47,7 +47,7 @@ namespace AndreLanches.Controllers
             {
                 _carrinhoCompra.RemoverDoCarrinho(lancheSelecionado);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("CarrinhoDeCompra");
         }
 
     }

@@ -1,4 +1,6 @@
 ﻿using AndreLanches.Models;
+using AndreLanches.Repositories.Interfaces;
+using AndreLanches.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,10 +8,21 @@ namespace AndreLanches.Controllers
 {
     public class HomeController : Controller
     {
-        
+        private readonly ILancheRepository _lancheRepository;
+
+        public HomeController(ILancheRepository lancheRepository)
+        {
+            _lancheRepository = lancheRepository;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var homeViewModel = new HomeViewModel
+            {
+                LanchesPreferidos = _lancheRepository.LanchesPreferidos,
+            };
+
+            return View(homeViewModel);
         }
 
 
