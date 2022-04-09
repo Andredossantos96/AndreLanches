@@ -29,11 +29,12 @@ namespace AndreLanches.Controllers
 
             return View(carrinhoCompraVM);
         }
-
-        public RedirectToActionResult AdicionarItemNoCarrinhoCompra(int lancheId)
+        public IActionResult AdicionarItemNoCarrinhoCompra(int lancheId)
         {
-            var lancheSelecionado = _lancheRepository.Lanches.FirstOrDefault(p => p.LancheId == lancheId);
-            if (lancheSelecionado == null)
+            var lancheSelecionado = _lancheRepository.Lanches
+                                    .FirstOrDefault(p => p.LancheId == lancheId);
+
+            if (lancheSelecionado != null)
             {
                 _carrinhoCompra.AdicionarAoCarrinho(lancheSelecionado);
             }
@@ -42,8 +43,10 @@ namespace AndreLanches.Controllers
 
         public IActionResult RemoverItemDoCarrinhoCompra(int lancheId)
         {
-            var lancheSelecionado = _lancheRepository.Lanches.FirstOrDefault(p => p.LancheId == lancheId);
-            if (lancheSelecionado == null)
+            var lancheSelecionado = _lancheRepository.Lanches
+                                    .FirstOrDefault(p => p.LancheId == lancheId);
+
+            if (lancheSelecionado != null)
             {
                 _carrinhoCompra.RemoverDoCarrinho(lancheSelecionado);
             }
