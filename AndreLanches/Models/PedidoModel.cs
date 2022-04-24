@@ -27,7 +27,7 @@ namespace AndreLanches.Models
         [StringLength(100)]
         [Display(Name = "Complemento")]
 
-        public string Endereço2 { get; set; }
+        public string Endereco2 { get; set; }
 
         [Required(ErrorMessage = "Informe o seu CEP")]
         [Display (Name = "CEP")]
