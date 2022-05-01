@@ -1,6 +1,7 @@
 ﻿using AndreLanches.Models;
 using AndreLanches.Repositories.Interfaces;
 using AndreLanches.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AndreLanches.Controllers
@@ -29,6 +30,8 @@ namespace AndreLanches.Controllers
 
             return View(carrinhoCompraVM);
         }
+
+        [Authorize]
         public IActionResult AdicionarItemNoCarrinhoCompra(int lancheId)
         {
             var lancheSelecionado = _lancheRepository.Lanches
@@ -41,6 +44,7 @@ namespace AndreLanches.Controllers
             return RedirectToAction("CarrinhoDeCompra");
         }
 
+        [Authorize]
         public IActionResult RemoverItemDoCarrinhoCompra(int lancheId)
         {
             var lancheSelecionado = _lancheRepository.Lanches

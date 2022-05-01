@@ -1,5 +1,6 @@
 ﻿using AndreLanches.Models;
 using AndreLanches.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AndreLanches.Controllers
@@ -16,17 +17,14 @@ namespace AndreLanches.Controllers
             _carrinhoCompra = carrinhoCompra;
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Checkout()
         {
             return View();
         }
 
-     /*   public IActionResult CheckoutCompleto()
-        {
-            return View();
-        }*/
-
+        [Authorize]
         [HttpPost]
         public IActionResult Checkout(PedidoModel pedido)
         {
