@@ -21,7 +21,7 @@ namespace AndreLanches.Models
         public string DescricaoCurta { get; set; }
 
         [Required(ErrorMessage = "A descrição do lanche deve ser informada")]
-        [Display(Name = "Descrição do Lanche")]
+        [Display(Name = "Descrição detalhada do Lanche")]
         [MinLength(20, ErrorMessage = "Descrição deve ter no mínimo {1} caracteres")]
         [MaxLength(200, ErrorMessage = "Descrição pode exceder {1} caracteres")]
         public string DescricaoDetalhada { get; set; }
@@ -44,6 +44,7 @@ namespace AndreLanches.Models
 
         [Display(Name = "Estoque")]
         public bool Emestoque { get; set; }
+        [Display(Name = "Categorias")]
         public int CategoriaId { get; set; }
         public virtual CategoriaModel Categoria { get; set; }
 
