@@ -1,4 +1,5 @@
-﻿using AndreLanches.Context;
+﻿using AndreLanches.Areas.Admin.Servicos;
+using AndreLanches.Context;
 using AndreLanches.Models;
 using AndreLanches.Repositories;
 using AndreLanches.Repositories.Interfaces;
@@ -32,6 +33,8 @@ public class Startup
         services.AddTransient<ICategoriaRepository, CategoriaRepository>();
         services.AddTransient<IPedidoRepository, PedidoRepository>();
         services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
+        services.AddScoped<RelatorioVendasService>();
+
 
         services.AddAuthorization(options =>
         {
