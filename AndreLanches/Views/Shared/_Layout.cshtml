@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/AndreLanches.styles.css" asp-append-version="true" />
-    
 </head>
+
 <body>
-    <header>
+@*    <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
@@ -40,7 +40,12 @@
                 </div>
             </div>
         </nav>
-    </header>
+    </header>*@
+
+    <div>
+         <partial name="_BarraMenu.cshtml" />
+    </div>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -53,7 +58,10 @@
         </div>
     </footer>*@
 
-    <partial name="_Footer"/>
+
+    <div>
+     <partial name="_Footer"/>
+    </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
