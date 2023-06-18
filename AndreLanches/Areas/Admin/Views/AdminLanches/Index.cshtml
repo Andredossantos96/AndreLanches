@@ -14,13 +14,13 @@
     <button type="submit" class="btn btn-info"> Procurar</button>
 </form>
 
-Total de Lanches : @Model.TotalRecordCount
+Total de Produtos : @Model.TotalRecordCount
 <div>
     <vc:pager paging-list="@Model"></vc:pager>
 </div>
 
 <p>
-    <a asp-action="Create">Criar Lanche</a>
+    <a asp-action="Create" class="btn btn-primary">Criar Produto</a>
 </p>
 <div class="row">
     <div class="col-md-10">

@@ -48,6 +48,12 @@ builder.Services.AddPaging(options =>
     options.PageParameterName = "pageindex";
 });
 
+/*
+builder.Services.Configure<IISServerOptions>(options =>
+{
+    options.AutomaticAuthentication = false;
+});*/
+
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();
 
